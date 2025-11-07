@@ -1,0 +1,42 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environment ---
+venv/
+.env/
+env/
+.venv/
+
+# --- IDE / Editor Files ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- OS Generated Files ---
+.DS_Store
+Thumbs.db
+
+# --- Logs & Temp Files ---
+*.log
+*.tmp
+*.bak
+
+# --- Bytecode / Build Files ---
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+.installed.cfg
+
+# --- Jupyter Notebook Checkpoints ---
+.ipynb_checkpoints/
+
+# --- Environment Variables ---
+*.env
+.env.local
+.env.production
+.env.development
