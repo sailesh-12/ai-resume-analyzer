@@ -36,7 +36,7 @@ pip-wheel-metadata/
 .ipynb_checkpoints/
 
 # --- Environment Variables ---
-*.env
+.env
 .env.local
 .env.production
 .env.development
