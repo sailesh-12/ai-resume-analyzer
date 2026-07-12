@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "name": "Frontend (React)",
+      "path": "resume-analyzer"
+    },
+    {
+      "name": "Backend (Python FastAPI)",
+      "path": "venv"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "Lib": true,
+      "Include": true,
+      "Scripts": true,
+      "pyvenv.cfg": true,
+      "**/node_modules": true,
+      "**/__pycache__": true,
+      "**/*.pyc": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/*.code-search": true,
+      "Lib": true,
+      "Include": true,
+      "Scripts": true
+    }
+  }
+}

@@ -14,7 +14,8 @@ import {
   Legend,
   Filler
 } from 'chart.js';
-import axios from 'axios';
+import api from '../services/api';
+import { ENDPOINTS } from '../constants/apiEndpoints';
 
 ChartJS.register(
   CategoryScale,
@@ -31,7 +32,6 @@ ChartJS.register(
 );
 
 export default function InsightsPanel({ file, loading, score, insights }) {
-  const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
   const [activeTab, setActiveTab] = useState('overview');
   const [scoreBreakdown, setScoreBreakdown] = useState(null);
   const [improvements, setImprovements] = useState(null);
@@ -80,12 +80,8 @@ export default function InsightsPanel({ file, loading, score, insights }) {
     try {
       const form = new FormData();
       form.append('file', file);
-      const token = localStorage.getItem('token');
-      const res = await axios.post(`${API_BASE}/analyze-score`, form, {
-        headers: {
-          ...(token && { 'Authorization': `Bearer ${token}` })
-        },
-        withCredentials: false
+      const res = await api.post(ENDPOINTS.SCORE_BREAKDOWN, form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log('Score breakdown response:', res.data);
       setScoreBreakdown(res.data);
@@ -119,12 +115,8 @@ export default function InsightsPanel({ file, loading, score, insights }) {
     try {
       const form = new FormData();
       form.append('file', file);
-      const token = localStorage.getItem('token');
-      const res = await axios.post(`${API_BASE}/analyze-improvements`, form, {
-        headers: {
-          ...(token && { 'Authorization': `Bearer ${token}` })
-        },
-        withCredentials: false
+      const res = await api.post(ENDPOINTS.IMPROVEMENTS, form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
       setImprovements(res.data);
     } catch (err) {
@@ -142,12 +134,8 @@ export default function InsightsPanel({ file, loading, score, insights }) {
     try {
       const form = new FormData();
       form.append('file', file);
-      const token = localStorage.getItem('token');
-      const res = await axios.post(`${API_BASE}/analyze-strengths`, form, {
-        headers: {
-          ...(token && { 'Authorization': `Bearer ${token}` })
-        },
-        withCredentials: false
+      const res = await api.post(ENDPOINTS.STRENGTHS, form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
       setStrengths(res.data);
     } catch (err) {

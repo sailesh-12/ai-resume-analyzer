@@ -1,20 +1,19 @@
 /* Elegant White & Blue Theme - Auth Pages */
 :root {
-  --primary: #2563eb;
-  --primary-light: #3b82f6;
-  --primary-dark: #1e40af;
-  --secondary: #1e3a8a;
-  --bg-light: #f8fafc;
-  --bg-white: #ffffff;
-  --text-primary: #1a202c;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
-  --border: #e2e8f0;
-  --success: #10b981;
-  --danger: #ef4444;
-  --radius: 10px;
-  --shadow-md: 0 4px 12px rgba(37, 99, 235, 0.1);
-  --shadow-lg: 0 10px 24px rgba(37, 99, 235, 0.12);
+  --auth-primary: var(--primary);
+  --auth-primary-light: var(--primary-light);
+  --auth-primary-dark: var(--primary-dark);
+  --auth-bg-surface: var(--bg-surface);
+  --auth-bg-surface-light: var(--bg-surface-light);
+  --auth-text-primary: var(--text-primary);
+  --auth-text-secondary: var(--text-secondary);
+  --auth-text-muted: var(--text-muted);
+  --auth-border: var(--border);
+  --auth-success: var(--success);
+  --auth-danger: var(--danger);
+  --auth-radius: 10px;
+  --auth-shadow-md: var(--shadow-md);
+  --auth-shadow-lg: var(--shadow-lg);
   --transition: 140ms ease;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
@@ -34,7 +33,7 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 50%, #f8fafc 100%);
+  background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-surface) 50%, var(--bg-deep) 100%);
   position: relative;
   overflow: hidden;
   padding: 20px;
@@ -68,13 +67,14 @@ html, body, #root {
   width: 100%;
   max-width: 420px;
   padding: 40px;
-  background: var(--bg-white);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
+  background: var(--auth-bg-surface);
+  border-radius: var(--auth-radius);
+  border: 1px solid var(--auth-border);
+  box-shadow: var(--auth-shadow-lg);
   z-index: 10;
   animation: slideUp 0.5s ease-out;
   position: relative;
+  color: var(--auth-text-primary);
 }
 
 @keyframes slideUp {
@@ -97,13 +97,13 @@ html, body, #root {
 .auth-logo {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--auth-primary) 0%, var(--auth-primary-light) 100%);
+  border-radius: var(--auth-radius);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--auth-shadow-md);
 }
 
 .auth-logo svg {
@@ -115,14 +115,14 @@ html, body, #root {
 .auth-title {
   font-size: 26px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--auth-text-primary);
   margin: 0 0 8px;
   letter-spacing: -0.5px;
 }
 
 .auth-subtitle {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--auth-text-secondary);
   margin: 0;
   line-height: 1.5;
 }
@@ -143,7 +143,7 @@ html, body, #root {
 .form-label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--auth-text-primary);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -152,43 +152,43 @@ html, body, #root {
 .form-label svg {
   width: 16px;
   height: 16px;
-  color: var(--primary);
+  color: var(--auth-primary);
 }
 
 .form-input {
   width: 100%;
   padding: 12px 14px;
-  background: var(--bg-light);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--auth-bg-surface-light);
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius);
   font-size: 0.95rem;
-  color: var(--text-primary);
+  color: var(--auth-text-primary);
   transition: all var(--transition);
   outline: none;
 }
 
 .form-input::placeholder {
-  color: var(--text-muted);
+  color: var(--auth-text-muted);
 }
 
 .form-input:hover {
-  border-color: rgba(37, 99, 235, 0.3);
-  background: #f5f8fc;
+  border-color: color-mix(in srgb, var(--auth-primary) 30%, var(--auth-border));
+  background: color-mix(in srgb, var(--auth-bg-surface-light) 92%, var(--auth-primary) 8%);
 }
 
 .form-input:focus {
-  border-color: var(--primary);
-  background: #f0f7ff;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--auth-primary);
+  background: var(--auth-bg-surface);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--auth-primary) 12%, transparent);
 }
 
 /* Submit Button */
 .auth-submit {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, var(--auth-primary) 0%, var(--auth-primary-light) 100%);
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--auth-radius);
   font-size: 0.95rem;
   font-weight: 700;
   color: white;
@@ -201,7 +201,7 @@ html, body, #root {
 
 .auth-submit:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--auth-shadow-lg);
 }
 
 .auth-submit:active {
@@ -218,9 +218,9 @@ html, body, #root {
 .auth-error {
   padding: 12px 14px;
   background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: var(--radius);
-  color: #dc2626;
+  border: 1px solid color-mix(in srgb, var(--auth-danger) 20%, transparent);
+  border-radius: var(--auth-radius);
+  color: var(--auth-danger);
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -247,10 +247,10 @@ html, body, #root {
 
 .auth-success {
   padding: 12px 14px;
-  background: rgba(16, 185, 129, 0.05);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  border-radius: var(--radius);
-  color: #059669;
+  background: color-mix(in srgb, var(--auth-success) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--auth-success) 20%, transparent);
+  border-radius: var(--auth-radius);
+  color: var(--auth-success);
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -268,23 +268,23 @@ html, body, #root {
   text-align: center;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--auth-border);
 }
 
 .auth-footer-text {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--auth-text-secondary);
 }
 
 .auth-link {
-  color: var(--primary);
+  color: var(--auth-primary);
   text-decoration: none;
   font-weight: 600;
   transition: color var(--transition);
 }
 
 .auth-link:hover {
-  color: var(--primary-light);
+  color: var(--auth-primary-light);
   text-decoration: underline;
 }
 
